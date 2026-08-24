@@ -1,0 +1,3 @@
+<app-customer-shell title="Care Reminders" subtitle="Never miss watering, feeding and plant-care tasks.">
+<div class="page-wrap"><div class="toast" *ngIf="message">{{message}}</div><div class="reminders"><article class="reminder" *ngFor="let r of reminders"><span class="reminder-icon">{{r.icon}}</span><div><h3>{{r.title}}</h3><p>{{r.plant}} · {{r.when}}</p></div><button class="secondary" (click)="notify(r.title+' completed')">Done</button></article></div></div>
+</app-customer-shell>

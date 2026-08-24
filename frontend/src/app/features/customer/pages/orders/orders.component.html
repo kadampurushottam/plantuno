@@ -1,0 +1,3 @@
+<app-customer-shell title="My Orders" subtitle="Track purchases, delivery status and order history.">
+<div class="page-wrap"><div class="toast" *ngIf="message">{{message}}</div><div class="table-card"><table><thead><tr><th>Order</th><th>Date</th><th>Items</th><th>Amount</th><th>Status</th><th></th></tr></thead><tbody><tr *ngFor="let o of orders"><td><strong>{{o.id}}</strong></td><td>{{o.date}}</td><td>{{o.items}}</td><td>₹{{o.amount}}</td><td><span class="status" [class.done]="o.status==='Delivered'">{{o.status}}</span></td><td><button (click)="notify('Order '+o.id+' details opened')">View</button></td></tr></tbody></table></div></div>
+</app-customer-shell>

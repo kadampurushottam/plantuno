@@ -1,0 +1,3 @@
+<app-customer-shell title="Help & Support" subtitle="We are here to help with orders, plants and payments.">
+<div class="page-wrap"><div class="toast" *ngIf="message">{{message}}</div><div class="help-grid"><article class="card" *ngFor="let h of help"><div class="service-icon">{{h.icon}}</div><h3>{{h.title}}</h3><p>{{h.text}}</p><button class="primary" (click)="notify(h.action+' started')">{{h.action}}</button></article></div></div>
+</app-customer-shell>

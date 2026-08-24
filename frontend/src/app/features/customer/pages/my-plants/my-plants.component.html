@@ -1,0 +1,3 @@
+<app-customer-shell title="My Plants" subtitle="Track your plants and keep their care routine on schedule.">
+<div class="page-wrap"><div class="toast" *ngIf="message">{{message}}</div><div class="grid"><article class="card plant-progress" *ngFor="let p of myPlants"><div class="mini-img">🌿</div><h3>{{p.name}}</h3><p>Next watering: {{p.next}}</p><div class="progress"><span [style.width.%]="p.progress"></span></div><small>{{p.progress}}% care complete</small><button class="secondary" (click)="notify('Care marked complete for '+p.name)">Mark Care Done</button></article></div></div>
+</app-customer-shell>

@@ -1,0 +1,58 @@
+<app-nursery-shell title="Plants & Inventory" subtitle="Add plants with a live photo, pricing and care information.">
+  <div class="page">
+    <div class="toolbar">
+      <div class="search-box">⌕ <input [(ngModel)]="q" placeholder="Search your plants..." /></div>
+      <button class="primary" (click)="openAdd()">＋ Add New Plant</button>
+    </div>
+
+    <div class="alert success" *ngIf="message">✓ {{message}}</div>
+    <div class="alert error" *ngIf="error">⚠ {{error}}</div>
+
+    <div class="stats">
+      <div><span>🌿</span><small>Total Plants</small><b>{{items.length}}</b></div>
+      <div><span>⭐</span><small>Featured</small><b>{{featuredCount}}</b></div>
+      <div><span>₹</span><small>Average Price</small><b>₹{{averagePrice}}</b></div>
+    </div>
+
+    <div class="card table-wrap">
+      <div class="table-head"><h2>My Plants</h2><span>{{filtered.length}} products</span></div>
+      <div *ngIf="loading" class="empty">Loading inventory...</div>
+      <table *ngIf="!loading">
+        <thead><tr><th>Plant</th><th>Category</th><th>Price</th><th>Care</th><th>Featured</th></tr></thead>
+        <tbody>
+          <tr *ngFor="let p of filtered">
+            <td class="plant-cell"><img [src]="p.image || 'assets/plant-placeholder.svg'" [alt]="p.name"><div><b>{{p.name}}</b><small>{{p.description || 'No description'}}</small></div></td>
+            <td>{{p.category}}</td><td>₹{{p.price}}</td><td>{{p.difficulty || 'Easy'}}</td><td>{{p.featured ? 'Yes' : 'No'}}</td>
+          </tr>
+          <tr *ngIf="!filtered.length"><td colspan="5" class="empty">No plants found. Click “Add New Plant” to create your first listing.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="modal-backdrop" *ngIf="showForm" (click)="closeAdd()">
+      <section class="modal" (click)="$event.stopPropagation()">
+        <header><div><span class="eyebrow">NEW LISTING</span><h2>Add Plant</h2></div><button class="close" type="button" (click)="closeAdd()">×</button></header>
+        <div class="form-grid">
+          <div class="photo-area">
+            <label class="photo-box">
+              <img *ngIf="photoPreview" [src]="photoPreview" alt="Plant preview">
+              <div *ngIf="!photoPreview"><span>📷</span><b>Take / Upload Photo</b><small>Mobile camera supported</small></div>
+              <input type="file" accept="image/*" capture="environment" (change)="onPhoto($event)">
+            </label>
+          </div>
+          <div class="fields">
+            <label>Plant Name<input [(ngModel)]="form.name" placeholder="e.g. Monstera Deliciosa"></label>
+            <label>Category<select [(ngModel)]="form.category"><option>Indoor</option><option>Outdoor</option><option>Flowering</option><option>Succulent</option><option>Medicinal</option><option>Fruit</option><option>Herb</option><option>Bonsai</option><option>Gift</option><option>Office</option></select></label>
+            <label>Price (₹)<input type="number" min="0" [(ngModel)]="form.price"></label>
+            <label>Description<textarea [(ngModel)]="form.description" rows="3" placeholder="Short plant description"></textarea></label>
+          </div>
+        </div>
+        <div class="care-grid">
+          <label>Light<input [(ngModel)]="form.light"></label><label>Water<input [(ngModel)]="form.water"></label><label>Difficulty<select [(ngModel)]="form.difficulty"><option>Easy</option><option>Medium</option><option>Hard</option></select></label>
+        </div>
+        <label class="check"><input type="checkbox" [(ngModel)]="form.featured"> Mark as featured plant</label>
+        <footer><button class="secondary" type="button" (click)="closeAdd()">Cancel</button><button class="primary" type="button" (click)="save()" [disabled]="saving">{{saving?'Saving...':'Save Plant'}}</button></footer>
+      </section>
+    </div>
+  </div>
+</app-nursery-shell>

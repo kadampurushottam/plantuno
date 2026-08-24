@@ -1,0 +1,4 @@
+<app-customer-shell title="Nearby Nurseries" subtitle="Find trusted nurseries close to your locality.">
+<div class="page-wrap"><div class="toolbar"><input [(ngModel)]="query" placeholder="Search nursery..."><button class="primary" (click)="notify('Using your registered location')">📍 Detect My Location</button></div>
+<div class="grid nursery-grid"><article class="card" *ngFor="let n of nurseries"><div class="nursery-img">🌳</div><h3>{{n.name}}</h3><p>📍 {{n.distance}}</p><p>⭐ {{n.rating}} · {{n.plants}}+ plants</p><button class="primary" (click)="notify('Opening '+n.name)">View Nursery</button></article></div><div class="toast" *ngIf="message">{{message}}</div></div>
+</app-customer-shell>

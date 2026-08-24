@@ -1,0 +1,22 @@
+<div class="customer-app">
+  <aside class="sidebar" [class.open]="mobileOpen">
+    <div class="brand"><span class="brand-leaf">🌿</span><div><strong>PlantUno</strong><small>One App. Every Plant.</small></div></div>
+    <nav>
+      <a *ngFor="let item of menu" [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="mobileOpen=false">
+        <span class="icon">{{item.icon}}</span><span>{{item.label}}</span>
+      </a>
+    </nav>
+    <button class="logout" (click)="logout()">↪ Logout</button>
+  </aside>
+  <div class="overlay" *ngIf="mobileOpen" (click)="mobileOpen=false"></div>
+  <main class="main">
+    <header class="topbar">
+      <button class="hamburger" (click)="mobileOpen=!mobileOpen">☰</button>
+      <div class="location">⌖ {{locationLabel}} <span>⌄</span></div>
+      <div class="search">⌕ <input placeholder="Search for plants, pots, fertilizers..." aria-label="Search" /></div>
+      <div class="actions"><button>♡</button><button (click)="go('/checkout')">🛒</button><button class="profile" (click)="go('/customer/dashboard')"><span class="avatar">{{auth.user?.name?.charAt(0) || 'U'}}</span><span class="profile-name">{{auth.user?.name || 'User'}}</span>⌄</button></div>
+    </header>
+    <section class="page-heading" *ngIf="title"><div><h1>{{title}}</h1><p>{{subtitle}}</p></div><ng-content select="[page-actions]"></ng-content></section>
+    <ng-content></ng-content>
+  </main>
+</div>

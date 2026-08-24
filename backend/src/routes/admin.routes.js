@@ -1,0 +1,10 @@
+const router=require('express').Router();
+const c=require('../controllers/admin.controller');
+const {requireAuth,requireRole}=require('../middleware/auth.middleware');
+router.use(requireAuth,requireRole('admin'));
+router.get('/users',c.users); router.patch('/users/:id',c.updateUser);
+router.get('/nurseries',c.nurseries);
+router.get('/plants',c.plants); router.post('/plants',c.createPlant); router.put('/plants/:id',c.updatePlant); router.delete('/plants/:id',c.deletePlant);
+router.get('/orders',c.orders); router.patch('/orders/:id',c.updateOrder);
+router.get('/reports',c.reports); router.get('/activities',c.activities);
+module.exports=router;

@@ -1,0 +1,45 @@
+<div class="auth-shell">
+  <div class="auth-brand">🌱 Plant<span>Uno</span></div>
+  <div class="register-card">
+    <div class="intro">
+      <a routerLink="/" class="back">← Back to home</a>
+      <span class="eyebrow">JOIN PLANTUNO</span>
+      <h1>Grow with us.</h1>
+      <p>Create your PlantUno account and unlock local plant discovery.</p>
+      <div class="benefit"><span>🌿</span><div><b>Discover plants</b><small>Find plants that fit your lifestyle.</small></div></div>
+      <div class="benefit"><span>📍</span><div><b>Use your locality</b><small>See nurseries and delivery options near you.</small></div></div>
+      <div class="benefit"><span>🪴</span><div><b>Manage your garden</b><small>Keep your plants healthy and happy.</small></div></div>
+    </div>
+    <div class="form-area">
+      <h2>Create account</h2>
+      <p class="sub">Your location helps PlantUno show the right local nurseries after login.</p>
+      <div class="roles">
+        <button type="button" [class.active]="role==='customer'" (click)="selectRole('customer')"><span>🌱</span><b>Plant Lover</b><small>Discover & shop</small></button>
+        <button type="button" [class.active]="role==='nursery'" (click)="selectRole('nursery')"><span>🏪</span><b>Nursery</b><small>Sell & grow business</small></button>
+      </div>
+      <div class="error" *ngIf="error">{{error}}</div>
+      <label *ngIf="role==='nursery'">Nursery name<input [(ngModel)]="nurseryName" placeholder="Green Garden Nursery"></label>
+      <label>Full name<input [(ngModel)]="name" placeholder="Your name"></label>
+      <label>Mobile number<input [(ngModel)]="phone" placeholder="9876543210"></label>
+      <label>Email address<input type="email" [(ngModel)]="email" placeholder="you@example.com"></label>
+      <label>Password<input type="password" [(ngModel)]="password" placeholder="Create a password"></label>
+
+      <div class="location-box">
+        <div class="location-head"><div><b>📍 Your location</b><small>Used for nearby nursery discovery</small></div><button type="button" (click)="useCurrentLocation()" [disabled]="locationLoading">{{locationLoading ? 'Detecting…' : 'Use Current Location'}}</button></div>
+        <div class="success" *ngIf="locationMessage">{{locationMessage}}</div>
+        <label>Address<input [(ngModel)]="address" placeholder="House / street / landmark"></label>
+        <div class="location-grid">
+          <label>Locality<input [(ngModel)]="locality" placeholder="Kothrud"></label>
+          <label>City<input [(ngModel)]="city" placeholder="Pune"></label>
+          <label>District<input [(ngModel)]="district" placeholder="Pune"></label>
+          <label>State<input [(ngModel)]="state" placeholder="Maharashtra"></label>
+          <label>Pincode<input [(ngModel)]="pincode" placeholder="411038"></label>
+        </div>
+        <small class="coords" *ngIf="latitude !== null && longitude !== null">GPS: {{latitude}}, {{longitude}}</small>
+      </div>
+
+      <button type="button" class="submit" [disabled]="loading" (click)="submit()">{{loading?'Creating account...':'Create Account →'}}</button>
+      <p class="switch">Already have an account? <a routerLink="/login">Sign in</a></p>
+    </div>
+  </div>
+</div>
