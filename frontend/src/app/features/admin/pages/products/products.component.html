@@ -1,1 +1,42 @@
-<app-admin-shell><div class="page-head"><div><small>MARKETPLACE CATALOG</small><h1>Products</h1><p>Add, edit and remove plants sold on PlantUno.</p></div><button class="primary" (click)="reset()">+ New Product</button></div><div class="grid"><form class="panel form" (ngSubmit)="save()"><h2>{{editing?'Edit':'Add'}} plant</h2><input [(ngModel)]="form.name" name="name" placeholder="Plant name" required/><input [(ngModel)]="form.category" name="category" placeholder="Category"/><input [(ngModel)]="form.price" name="price" type="number" placeholder="Price"/><input [(ngModel)]="form.image" name="image" placeholder="Image path"/><textarea [(ngModel)]="form.description" name="description" placeholder="Description"></textarea><label><input type="checkbox" [(ngModel)]="form.featured" name="featured"/> Featured product</label><button class="primary" type="submit">{{editing?'Update':'Create'}} Product</button><span class="msg">{{msg}}</span></form><div class="panel table-wrap"><table><thead><tr><th>Plant</th><th>Category</th><th>Price</th><th>Nursery</th><th>Actions</th></tr></thead><tbody><tr *ngFor="let p of items"><td><b>{{p.name}}</b></td><td>{{p.category}}</td><td>₹{{p.price}}</td><td>{{p.nurseryId?.name||'Marketplace'}}</td><td><button (click)="edit(p)">Edit</button> <button (click)="remove(p)">Delete</button></td></tr></tbody></table></div></div></app-admin-shell>
+<app-admin-shell>
+    <div class="page-head">
+        <div><small>MARKETPLACE CATALOG</small>
+            <h1>Products</h1>
+            <p>Add, edit and remove plants sold on PlantUno.</p>
+        </div><button class="primary" (click)="reset()">+ New Product</button>
+    </div>
+    <div class="grid">
+        <form class="panel form" (ngSubmit)="save()">
+            <h2>{{editing?'Edit':'Add'}} plant</h2><input [(ngModel)]="form.name" name="name" placeholder="Plant name"
+                required /><input [(ngModel)]="form.category" name="category" placeholder="Category" /><input
+                [(ngModel)]="form.price" name="price" type="number" placeholder="Price" /><input
+                [(ngModel)]="form.image" name="image" placeholder="Image path" /><textarea
+                [(ngModel)]="form.description" name="description" placeholder="Description"></textarea><label><input
+                    type="checkbox" [(ngModel)]="form.featured" name="featured" /> Featured product</label><button
+                class="primary" type="submit">{{editing?'Update':'Create'}} Product</button><span
+                class="msg">{{msg}}</span>
+        </form>
+        <div class="panel table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Plant</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Nursery</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of items">
+                        <td><b>{{p.name}}</b></td>
+                        <td>{{p.category}}</td>
+                        <td>₹{{p.price}}</td>
+                        <td>{{p.nurseryId?.name||'Marketplace'}}</td>
+                        <td><button (click)="edit(p)">Edit</button> <button (click)="remove(p)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</app-admin-shell>
