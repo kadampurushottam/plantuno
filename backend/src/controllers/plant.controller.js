@@ -3,9 +3,9 @@ const Nursery=require('../models/Nursery');
 
 function escapeRegex(value){return value.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
 const categoryAliases={
-  'Indoor Plants':'Indoor','Outdoor Plants':'Outdoor','Flowering Plants':'Flowering',
-  'Succulents':'Succulent','Medicinal Plants':'Medicinal','Fruit Plants':'Fruit',
-  'Herb Plants':'Herb','Bonsai Plants':'Bonsai','Gift Plants':'Gift','Office Plants':'Office'
+  'Indoor Plants':'Indoor Plants','Outdoor Plants':'Outdoor Plants','Flowering Plants':'Flowering Plants','Foliage Plants':'Foliage Plants','Cactus':'Cactus','Orchids':'Orchid',
+  'Succulents':'Succulents','Medicinal Plants':'Medicinal Plants','Fruit Plants':'Fruit Plants','Vegetable Plants':'Vegetable Plants','Aquatic Plants':'Aquatic Plants','Air Purifying Plants':'Air Purifying Plants','Rare Plants':'Rare Plants',
+  'Herb Plants':'Herb Plants','Bonsai Plants':'Bonsai Plants','Gift Plants':'Gift Plants','Office Plants':'Office Plants'
 };
 
 async function list(req,res){

@@ -28,8 +28,8 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   readonly categories = ['All', 'Indoor Plants', 'Outdoor Plants', 'Flowering Plants', 'Succulents', 'Medicinal Plants', 'Fruit Plants', 'Herb Plants', 'Bonsai Plants', 'Gift Plants', 'Office Plants'];
   readonly categoryImages: Record<string, string> = {
-    'Indoor Plants': 'assets/plants/indoorPlant.jpg', 'Outdoor Plants': 'assets/plants/outdoorPlant.jpg', 'Flowering Plants': 'assets/plants/rose.svg',
-    'Succulents': 'assets/plants/aloe.svg', 'Medicinal Plants': 'assets/plants/tulsi.svg', 'Fruit Plants': 'assets/plants/orchid.svg',
+    'Indoor Plants': 'assets/plants/indoorPlant.jpg', 'Outdoor Plants': 'assets/plants/outdoorPlant.jpg', 'Flowering Plants': 'assets/plants/flowrining.jpg',
+    'Succulents': 'assets/plants/succulent.jpg', 'Medicinal Plants': 'assets/plants/tulsi.svg', 'Fruit Plants': 'assets/plants/orchid.svg',
     'Herb Plants': 'assets/plants/money.svg', 'Bonsai Plants': 'assets/plants/bonsai.svg', 'Gift Plants': 'assets/plants/orchid.svg', 'Office Plants': 'assets/plants/snake.svg'
   };
   readonly quickSearches = ['Money Plant', 'Snake Plant', 'Rose', 'Aloe Vera', 'Tulsi', 'Indoor Plants', 'Outdoor Plants'];

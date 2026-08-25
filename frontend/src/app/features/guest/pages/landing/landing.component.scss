@@ -74,9 +74,9 @@ h2 span {
 .dark-btn {
     border: 0;
     border-radius: 12px;
-    padding: 12px 17px;
-    font-weight: 800;
-    cursor: pointer
+    padding: 10px 10px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .primary {
@@ -1071,4 +1071,36 @@ h2 span {
     .ai-flow strong {
         display: none
     }
+}
+
+/* Ensure the target text never breaks across lines */
+.search-main {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap; /* Prevents controls from wrapping to a new line */
+  width: 100%;
+  gap: 8px; /* Optional spacing between controls */
+}
+
+.search-main input {
+  flex: 1 1 auto; /* Allows input to grow/shrink without forcing line breaks */
+  min-width: 0;   /* Crucial: allows flex items to shrink below their default content size on small screens */
+}
+
+/* Keep action buttons fixed to their explicit content sizes */
+.search-btn, 
+.detect-btn, 
+.clear {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .search-main {
+    flex-wrap: wrap; /* Allows location button to sit cleanly on its own row on mobile */
+  }
+
+  .detect-btn {
+    width: 100%; /* Full width below the search bar on narrow screens */
+  }
 }
