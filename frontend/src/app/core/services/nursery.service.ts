@@ -23,7 +23,7 @@ export interface NurseryLocation {
 @Injectable({ providedIn: 'root' })
 export class NurseryService {
   private readonly http = inject(HttpClient);
-  private readonly api = 'http://localhost:5000/api/nurseries';
+  private readonly api = 'https://plantuno-backend.vercel.app/api/nurseries';
 
   nearby(latitude: number, longitude: number, radiusKm = 10): Observable<NurseryLocation[]> {
     const params = new HttpParams()

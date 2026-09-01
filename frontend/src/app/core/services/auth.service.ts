@@ -8,7 +8,7 @@ import { AuthResponse, AuthUser, UserRole } from '../models/user.model';
 export class AuthService {
   private readonly http = inject(HttpClient);
   private readonly router = inject(Router);
-  private readonly api = 'http://localhost:5000/api/auth';
+  private readonly api = 'https://plantuno-backend.vercel.app/api/auth';
 
   get user(): AuthUser | null {
     const raw = localStorage.getItem('plantuno_user');

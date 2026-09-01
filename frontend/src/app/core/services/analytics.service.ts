@@ -20,7 +20,7 @@ export interface AdminStats {
 @Injectable({providedIn:'root'})
 export class AnalyticsService {
   private readonly http=inject(HttpClient);
-  private readonly api='http://localhost:5000/api/orders';
+  private readonly api='https://plantuno-backend.vercel.app/api/orders';
   customer():Observable<CustomerStats>{return this.http.get<CustomerStats>(`${this.api}/mine/stats`);}
   nursery():Observable<NurseryStats>{return this.http.get<NurseryStats>(`${this.api}/nursery/stats`);}
   admin():Observable<AdminStats>{return this.http.get<AdminStats>(`${this.api}/admin/stats`);}

@@ -8,7 +8,7 @@ export interface AdminOrder { _id:string; customer:string; email:string; total:n
 
 @Injectable({providedIn:'root'})
 export class AdminService {
- private http=inject(HttpClient); private api='http://localhost:5000/api/admin';
+ private http=inject(HttpClient); private api='https://plantuno-backend.vercel.app/api/admin';
  users():Observable<{items:AdminUser[]}>{return this.http.get<{items:AdminUser[]}>(`${this.api}/users`)}
  updateUser(id:string,role:string){return this.http.patch(`${this.api}/users/${id}`,{role})}
  nurseries():Observable<{items:any[]}>{return this.http.get<{items:any[]}>(`${this.api}/nurseries`)}

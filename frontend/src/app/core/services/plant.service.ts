@@ -6,7 +6,7 @@ import { Plant, PlantListResponse } from '../models/plant.model';
 @Injectable({ providedIn: 'root' })
 export class PlantService {
   private readonly http = inject(HttpClient);
-  private readonly api = 'http://localhost:5000/api/plants';
+  private readonly api = 'https://plantuno-backend.vercel.app/api/plants';
 
   search(search = '', category = 'All'): Observable<PlantListResponse> {
     let params = new HttpParams();
