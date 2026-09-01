@@ -15,22 +15,63 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
-    "build": {
-      "builder": "@angular-devkit/build-angular:application",
-      "options": {
-        "outputPath": "dist",
-        "browser": "src/main.ts",
-        "tsConfig": "tsconfig.app.json",
-        "assets": [
-          "src/assets"
-        ],
-        "styles": [
-          "node_modules/bootstrap/dist/css/bootstrap.min.css",
-          "src/styles.scss"
-        ],
-        "scripts": [
-          "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-        ]
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": {
+              "base": "dist",
+              "browser": ""
+            },
+            "browser": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "plantuno:build:production"
+            },
+            "development": {
+              "buildTarget": "plantuno:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ]
+          }
+        }
       }
     }
   },
