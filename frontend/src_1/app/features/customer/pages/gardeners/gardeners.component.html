@@ -1,3 +1,0 @@
-<app-customer-shell title="Gardeners" subtitle="Book experienced gardeners for home and terrace care.">
-<div class="page-wrap"><div class="toast" *ngIf="message">{{message}}</div><div class="grid"><article class="card service" *ngFor="let g of gardeners"><div class="service-icon">👨‍🌾</div><h3>{{g.name}}</h3><p>{{g.skill}}</p><p>⭐ {{g.rating}} · {{g.experience}} years</p><button class="primary" (click)="notify('Gardener request sent to '+g.name)">Hire Gardener</button></article></div></div>
-</app-customer-shell>

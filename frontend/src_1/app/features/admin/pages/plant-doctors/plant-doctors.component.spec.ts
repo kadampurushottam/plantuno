@@ -1,1 +1,0 @@
-import {TestBed} from '@angular/core/testing';import {PlantDoctorsComponent} from './plant-doctors.component';describe('PlantDoctorsComponent',()=>{it('creates',async()=>{await TestBed.configureTestingModule({imports:[PlantDoctorsComponent]}).compileComponents();expect(TestBed.createComponent(PlantDoctorsComponent).componentInstance).toBeTruthy()})});

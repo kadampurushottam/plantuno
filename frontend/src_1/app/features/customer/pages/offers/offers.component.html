@@ -1,3 +1,0 @@
-<app-customer-shell title="Offers" subtitle="Save more on plants, accessories and nursery delivery.">
-<div class="page-wrap"><div class="toast" *ngIf="message">{{message}}</div><div class="grid"><article class="offer" *ngFor="let o of offers"><span>{{o.badge}}</span><h2>{{o.title}}</h2><p>{{o.text}}</p><code>{{o.code}}</code><button class="primary" (click)="notify('Coupon '+o.code+' copied')">Copy Code</button></article></div></div>
-</app-customer-shell>

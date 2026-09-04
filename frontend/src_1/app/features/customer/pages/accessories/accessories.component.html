@@ -1,3 +1,0 @@
-<app-customer-shell title="Accessories" subtitle="Pots, tools, fertilizers and everyday gardening essentials.">
-<div class="page-wrap"><div class="toast" *ngIf="message">{{message}}</div><div class="grid"><article class="card product" *ngFor="let a of accessories"><div class="product-art">{{a.icon}}</div><h3>{{a.name}}</h3><p>{{a.description}}</p><div class="row"><strong>₹{{a.price}}</strong><button (click)="notify(a.name+' added to cart')">Add to Cart</button></div></article></div></div>
-</app-customer-shell>

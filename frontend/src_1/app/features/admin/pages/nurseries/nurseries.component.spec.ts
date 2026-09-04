@@ -1,1 +1,0 @@
-import {TestBed} from '@angular/core/testing';import {NurseriesComponent} from './nurseries.component';describe('NurseriesComponent',()=>{it('creates',async()=>{await TestBed.configureTestingModule({imports:[NurseriesComponent]}).compileComponents();expect(TestBed.createComponent(NurseriesComponent).componentInstance).toBeTruthy()})});

@@ -1,6 +1,0 @@
-<app-customer-shell title="Plants" subtitle="Explore plants selected for your home and garden.">
-<div class="page-wrap"><div class="toast" *ngIf="message">{{message}}</div>
-<div class="toolbar"><input [(ngModel)]="query" placeholder="Search plants..."><div class="chips"><button *ngFor="let c of categories" [class.selected]="selected===c" (click)="selected=c">{{c}}</button></div></div>
-<div class="grid"><article class="card plant" *ngFor="let p of filteredPlants()"><img [src]="p.image" [alt]="p.name"><span class="tag">{{p.category}}</span><h3>{{p.name}}</h3><p>{{p.description}}</p><div class="row"><strong>₹{{p.price}}</strong><button (click)="notify(p.name+' added to cart')">🛒 Add</button></div></article></div>
-<div class="empty" *ngIf="filteredPlants().length===0">No plants found. Try another search.</div></div>
-</app-customer-shell>
