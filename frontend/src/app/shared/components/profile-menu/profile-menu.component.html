@@ -1,0 +1,17 @@
+<div class="pu-profile">
+  <button class="pu-profile-trigger" type="button" (click)="toggle($event)" [attr.aria-expanded]="open">
+    <span class="pu-avatar">{{ initial }}</span>
+    <!-- <span class="pu-profile-name">{{ displayName }}</span> -->
+    <!-- <span class="pu-chevron" [class.open]="open"></span> -->
+  </button>
+  <div class="pu-profile-menu" *ngIf="open" (click)="$event.stopPropagation()">
+    <div class="pu-profile-head">
+      <span class="pu-avatar pu-avatar-lg">{{ initial }}</span>
+      <div><strong>{{ displayName }}</strong><small>{{ role | titlecase }}</small></div>
+    </div>
+    <button type="button" (click)="navigate(settingsRoute)"><span>👤</span>{{ profileLabel }}</button>
+    <button type="button" *ngIf="role !== 'customer'" (click)="navigate(settingsRoute)"><span>⚙</span>Settings</button>
+    <div class="pu-profile-divider"></div>
+    <button type="button" class="pu-logout" (click)="logout()"><span>↪</span>Logout</button>
+  </div>
+</div>

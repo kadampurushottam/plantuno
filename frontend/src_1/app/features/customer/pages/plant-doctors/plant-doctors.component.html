@@ -1,0 +1,3 @@
+<app-customer-shell title="Plant Doctors" subtitle="Get expert diagnosis and care guidance for your plants.">
+<div class="page-wrap"><div class="toast" *ngIf="message">{{message}}</div><div class="grid"><article class="card service" *ngFor="let d of doctors"><div class="service-icon">🩺</div><h3>{{d.name}}</h3><p>{{d.speciality}}</p><strong>₹{{d.fee}} / consultation</strong><button class="primary" (click)="notify('Appointment request sent to '+d.name)">Book Appointment</button></article></div></div>
+</app-customer-shell>

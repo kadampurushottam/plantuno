@@ -1,0 +1,1 @@
+import {TestBed} from '@angular/core/testing';import {CouponsComponent} from './coupons.component';describe('CouponsComponent',()=>{it('creates',async()=>{await TestBed.configureTestingModule({imports:[CouponsComponent]}).compileComponents();expect(TestBed.createComponent(CouponsComponent).componentInstance).toBeTruthy()})});

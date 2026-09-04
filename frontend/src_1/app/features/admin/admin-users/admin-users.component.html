@@ -1,0 +1,28 @@
+<section class="admin-users">
+  <header><h1>Admin Users</h1><p>PlantUno Owner can create and manage administrators.</p></header>
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <form class="card form" (ngSubmit)="create()">
+    <input [(ngModel)]="newAdmin.name" name="name" placeholder="Name" required>
+    <input [(ngModel)]="newAdmin.email" name="email" type="email" placeholder="Email" required>
+    <input [(ngModel)]="newAdmin.mobile" name="mobile" placeholder="Mobile">
+    <input [(ngModel)]="newAdmin.password" name="password" type="password" placeholder="Temporary password" required>
+    <label><input [(ngModel)]="newAdmin.isSuperAdmin" name="isSuperAdmin" type="checkbox"> Super Admin</label>
+    <button type="submit">Create Admin</button>
+  </form>
+
+  <div class="card table-wrap">
+    <table>
+      <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let admin of admins">
+          <td>{{ admin.name }}</td>
+          <td>{{ admin.email }}</td>
+          <td>{{ admin.isSuperAdmin ? 'Owner / Super Admin' : 'Admin' }}</td>
+          <td>{{ admin.isActive ? 'Active' : 'Disabled' }}</td>
+          <td><button (click)="toggle(admin)">{{ admin.isActive ? 'Disable' : 'Enable' }}</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

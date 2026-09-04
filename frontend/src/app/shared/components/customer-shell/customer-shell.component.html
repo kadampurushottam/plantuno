@@ -1,22 +1,37 @@
 <div class="customer-app">
   <aside class="sidebar" [class.open]="mobileOpen">
     <div class="brand"><span class="brand-leaf">🌿</span><div><strong>PlantUno</strong><small>One App. Every Plant.</small></div></div>
-    <nav>
-      <a *ngFor="let item of menu" [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="mobileOpen=false">
-        <span class="icon">{{item.icon}}</span><span>{{item.label}}</span>
-      </a>
-    </nav>
-    <button class="logout" (click)="logout()">↪ Logout</button>
+    <nav><a *ngFor="let item of menu" [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="mobileOpen=false"><span class="icon">{{item.icon}}</span><span>{{item.label}}</span></a></nav>
   </aside>
   <div class="overlay" *ngIf="mobileOpen" (click)="mobileOpen=false"></div>
   <main class="main">
     <header class="topbar">
-      <button class="hamburger" (click)="mobileOpen=!mobileOpen">☰</button>
-      <div class="location">⌖ {{locationLabel}} <span>⌄</span></div>
-      <div class="search">⌕ <input placeholder="Search for plants, pots, fertilizers..." aria-label="Search" /></div>
-      <div class="actions"><button>♡</button><button (click)="go('/checkout')">🛒</button><button class="profile" (click)="go('/customer/dashboard')"><span class="avatar">{{auth.user?.name?.charAt(0) || 'U'}}</span><span class="profile-name">{{auth.user?.name || 'User'}}</span>⌄</button></div>
+      <button class="hamburger" (click)="mobileOpen=!mobileOpen" aria-label="Open navigation">☰</button>
+      <button class="mobile-brand" (click)="go('/customer/dashboard')">🌿 PlantUno</button>
+      <div class="location-wrap">
+        <button class="location" type="button" (click)="toggleLocation()" [attr.aria-expanded]="locationOpen" title="Choose location">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.2"/></svg>
+          <span>{{locationLabel}}</span><span class="location-chevron">⌄</span>
+        </button>
+        <div class="location-pop" *ngIf="locationOpen" (click)="$event.stopPropagation()">
+          <strong>Your location</strong>
+          <p>{{locationLabel}}</p>
+          <button type="button" class="location-current" (click)="detectLocation()" [disabled]="locationLoading">
+            <span>⌖</span>{{locationLoading ? 'Detecting location…' : 'Use my current location'}}
+          </button>
+          <small *ngIf="locationMessage">{{locationMessage}}</small>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="action-btn" (click)="go('/customer/wishlist')" title="Wishlist" aria-label="Wishlist">♡</button>
+        <button class="action-btn cart" (click)="go('/checkout')" title="Cart" aria-label="Cart">🛒<b *ngIf="cartCount">{{cartCount}}</b></button>
+        <button class="action-btn" (click)="notificationsOpen=!notificationsOpen" title="Notifications" aria-label="Notifications">🔔<b *ngIf="unreadCount">{{unreadCount}}</b></button>
+        <app-profile-menu></app-profile-menu>
+      </div>
+      <div class="notification-pop" *ngIf="notificationsOpen"><div class="d-flex justify-content-between align-items-center mb-2"><strong>Notifications</strong><button (click)="markNotifications()">Mark read</button></div><div class="notification" *ngFor="let n of notifications.items | slice:0:4"><b>{{n.title}}</b><small>{{n.text}}</small></div></div>
     </header>
     <section class="page-heading" *ngIf="title"><div><h1>{{title}}</h1><p>{{subtitle}}</p></div><ng-content select="[page-actions]"></ng-content></section>
     <ng-content></ng-content>
   </main>
+  <nav class="mobile-nav"><a routerLink="/customer/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">⌂<small>Home</small></a><a routerLink="/customer/plants" routerLinkActive="active">⌕<small>Plants</small></a><a routerLink="/customer/my-plants" routerLinkActive="active">🌿<small>My Plants</small></a><a routerLink="/customer/orders" routerLinkActive="active">🧾<small>Orders</small></a><a routerLink="/customer/wishlist" routerLinkActive="active">♡<small>Saved</small></a></nav>
 </div>

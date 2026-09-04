@@ -1,0 +1,22 @@
+<div class="nursery-app">
+  <aside class="sidebar" [class.open]="mobileOpen">
+    <div class="brand"><span class="leaf">🌿</span><div><strong>PlantUno</strong><small>Nursery Partner</small></div></div>
+    <nav>
+      <a *ngFor="let m of menu" [routerLink]="m[1]" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="mobileOpen=false">
+        <span class="icon">{{m[2]}}</span><span>{{m[0]}}</span>
+      </a>
+    </nav>
+    <button class="logout" (click)="logout()">↪ Logout</button>
+  </aside>
+  <div class="overlay" *ngIf="mobileOpen" (click)="mobileOpen=false"></div>
+  <main class="main">
+    <header class="topbar">
+      <button class="hamburger" (click)="mobileOpen=!mobileOpen">☰</button>
+      <div class="crumb"><span>PlantUno</span><b> / {{title}}</b></div>
+      <div class="search">⌕ <input placeholder="Search plants, orders, customers..." /></div>
+      <div class="actions"><button title="Notifications">🔔</button><button class="profile" (click)="go('/nursery/settings')"><span class="avatar">{{auth.user?.name?.charAt(0)||'N'}}</span><span class="profile-name">{{auth.user?.name||'Nursery'}}</span>⌄</button></div>
+    </header>
+    <section class="heading"><div><span class="eyebrow">NURSERY BUSINESS</span><h1>{{title}}</h1><p>{{subtitle}}</p></div></section>
+    <ng-content></ng-content>
+  </main>
+</div>

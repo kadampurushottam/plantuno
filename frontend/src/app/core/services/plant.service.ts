@@ -15,6 +15,8 @@ export class PlantService {
     return this.http.get<PlantListResponse>(this.api, { params });
   }
 
+  getById(id: string): Observable<Plant> { return this.http.get<Plant>(`${this.api}/${id}`); }
+
   mine(): Observable<PlantListResponse> {
     return this.http.get<PlantListResponse>(`${this.api}/mine`);
   }

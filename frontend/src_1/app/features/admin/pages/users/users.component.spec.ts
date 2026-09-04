@@ -1,0 +1,1 @@
+import {TestBed} from '@angular/core/testing';import {UsersComponent} from './users.component';describe('UsersComponent',()=>{it('creates',async()=>{await TestBed.configureTestingModule({imports:[UsersComponent]}).compileComponents();expect(TestBed.createComponent(UsersComponent).componentInstance).toBeTruthy()})});

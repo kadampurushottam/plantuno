@@ -1,0 +1,3 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { OffersComponent } from './offers.component';
+describe('OffersComponent',()=>{let fixture:ComponentFixture<OffersComponent>; beforeEach(async()=>{await TestBed.configureTestingModule({imports:[OffersComponent]}).compileComponents(); fixture=TestBed.createComponent(OffersComponent);}); it('creates',()=>expect(fixture.componentInstance).toBeTruthy());});

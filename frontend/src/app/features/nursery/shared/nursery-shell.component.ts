@@ -2,11 +2,12 @@ import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+import { ProfileMenuComponent } from '../../../shared/components/profile-menu/profile-menu.component';
 
 @Component({
   selector:'app-nursery-shell',
   standalone:true,
-  imports:[CommonModule,RouterLink,RouterLinkActive],
+  imports:[CommonModule,RouterLink,RouterLinkActive,ProfileMenuComponent],
   templateUrl:'./nursery-shell.component.html',
   styleUrls:['./nursery-shell.component.scss']
 })
@@ -30,6 +31,5 @@ export class NurseryShellComponent {
     ['Settings','/nursery/settings','⚙️']
   ];
 
-  logout(){ this.auth.logout(); }
   go(route:string){ this.mobileOpen=false; this.router.navigateByUrl(route); }
 }

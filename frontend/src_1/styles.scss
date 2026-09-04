@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    margin: 0;
+    font-family: 'DM Sans', Arial, sans-serif;
+    color: #17331f;
+    background: #fff
+}
+
+// button,
+// input {
+//     font: inherit
+// }
+
+button {
+    cursor: pointer
+}
